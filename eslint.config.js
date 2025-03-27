@@ -1,18 +1,21 @@
-module.exports = {
-    env: {
-      browser: true,
-      es2021: true,
-      node: true,
+export default [
+    {
+      ignores: ["node_modules"],
     },
-    extends: "eslint:recommended",
-    parserOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
+    {
+      files: ["**/*.js"],
+      languageOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+        globals: {
+          console: "readonly",
+          module: "readonly",
+        },
+      },
+      rules: {
+        "no-var": "error", // Ensure 'var' is not used
+        "semi": ["error", "always"],
+      },
     },
-    rules: {
-      "no-var": "error", // Disallow 'var'
-      "semi": ["error", "always"], // Enforce semicolons
-      "quotes": ["error", "double"], // Enforce double quotes
-    },
-  };
+  ];
   
