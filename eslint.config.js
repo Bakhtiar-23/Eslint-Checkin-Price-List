@@ -1,18 +1,18 @@
-module.exports = {
-    env: {
-      browser: true,
-      es2021: true,
-      node: true,
-    },
-    extends: "eslint:recommended",
-    parserOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
-    },
-    rules: {
-      "no-var": "error", // Disallow 'var'
-      "semi": ["error", "always"], // Enforce semicolons
-      "quotes": ["error", "double"], // Enforce double quotes
-    },
-  };
-  
+import { defineConfig } from "eslint/config";
+import globals from "globals";
+import js from "@eslint/js";
+
+export default defineConfig([
+  {
+    ignores: ["node_modules"], // Ignoring node_modules folder
+  },
+  {
+    files: ["**/*.{js,mjs,cjs}"],
+    languageOptions: { globals: globals.browser },
+  },
+  {
+    files: ["**/*.{js,mjs,cjs}"],
+    plugins: { js },
+    extends: ["js/recommended"],
+  },
+]);
